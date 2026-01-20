@@ -30,14 +30,26 @@ The system uses a **Hybrid Cloud Architecture**:
 ### 1. Prerequisites
 - Python 3.10 or higher installed.
 - Docker Desktop installed and running.
-- An active Google Colab instance running Ollama and Ngrok.
+- An Ngrok account (for the authentication token).
 
-### 2. Installation
+### 2. Cloud Setup (The "Brain")
+Since this is a hybrid architecture, the LLM runs in the cloud.
+
+1.  Upload the file `llm_server_colab.ipynb` from this repository to **Google Colab**.
+2.  In the notebook, find the cell containing:
+    ```python
+    !ngrok config add-authtoken <YOUR_TOKEN>
+    ```
+    and replace `<YOUR_TOKEN>` with your personal Ngrok Authtoken.
+3.  **Run all cells** (Runtime -> Run all).
+4.  Copy the public Ngrok URL (e.g., `https://xxxx-xx-xx.ngrok-free.dev`) generated in the last step.
+
+### 3. Installation
 
 Clone the repository and install dependencies:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/k49ar5/hybrid-rag-resume-assistant
 cd hybrid-rag-resume-assistant
 python -m venv venv
 # Windows:
@@ -48,7 +60,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 ```
-### 3. Configuration
+### 4. Configuration
 
 Create a .env file in the root directory with the following variables:
 
@@ -57,7 +69,7 @@ COLLECTION_NAME=cv_test
 # Update this URL based on your current Ngrok session
 COLAB_URL=[https://your-ngrok-url.ngrok-free.dev](https://your-ngrok-url.ngrok-free.dev)
 
-### 4. Running the Application
+### 5. Running the Application
 
 run.bat
 
