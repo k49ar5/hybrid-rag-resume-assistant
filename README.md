@@ -46,3 +46,40 @@ venv\Scripts\activate
 source venv/bin/activate
 
 pip install -r requirements.txt
+
+```
+### 3. Configuration
+
+Create a .env file in the root directory with the following variables:
+
+QDRANT_URL=http://localhost:6333
+COLLECTION_NAME=cv_test
+# Update this URL based on your current Ngrok session
+COLAB_URL=[https://your-ngrok-url.ngrok-free.dev](https://your-ngrok-url.ngrok-free.dev)
+
+### 4. Running the Application
+
+run.bat
+
+Manual Start (Linux/Mac):
+docker-compose up -d
+python api.py
+
+Usage
+Once the application is running, access the interactive API documentation (Swagger UI) at: http://localhost:8000/docs
+
+Example Request (POST /chat)
+JSON
+{
+  "question": "Does the candidate have experience with Python and Docker?"
+}
+Project Structure
+api.py: Main entry point for the FastAPI application.
+
+ingest.py: Script to process PDF files and load embeddings into Qdrant.
+
+docker-compose.yml: Configuration for the Qdrant database container.
+
+run.bat: Helper script for Windows deployment.
+
+requirements.txt: List of project dependencies.
